@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Météo</title>
+  </head>
+  <body>
+    <header>
+      <h1>MÉTÉO DU JOUR</h1>
+    </header>
+
+    <main>
+      <!-- Formulaire pour rechercher une ville -->
+      <section id="search-section">
+        <input type="text" id="city-input" placeholder="Entrez une ville" />
+        <button id="search-btn">Rechercher</button>
+        <button id="geo-btn">Géolocalisation</button>
+      </section>
+
+      <!-- Conteneur pour les villes ajoutées -->
+      <section id="cities-container">
+        <!-- Chaque ville sera ajoutée dynamiquement ici -->
+      </section>
+    </main>
+
+    <!-- Template HTML pour afficher les données météo d'une ville -->
+    <template id="city-template">
+      <div class="city-card">
+        <h2 class="city-name"></h2>
+        <img class="weather-icon" src="" alt="Icône météo" />
+        <p class="temperature"></p>
+        <p class="humidity"></p>
+        <p class="wind"></p>
+      </div>
+    </template>
+  </body>
+</html>
