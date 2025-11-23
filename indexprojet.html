@@ -3,36 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Application Météo</title>
+    <title>App Météo Pro</title>
+    <link rel="stylesheet" href="meteo.css" />
   </head>
-  <body>
-    <header>
-      <h1>MÉTÉO DU JOUR</h1>
-    </header>
 
-    <main>
-      <!-- Formulaire pour rechercher une ville -->
-      <section id="search-section">
-        <input type="text" id="city-input" placeholder="Entrez une ville" />
-        <button id="search-btn">Rechercher</button>
-        <button id="geo-btn">Géolocalisation</button>
-      </section>
+  <body class="light">
+    <!-- Toggle Thème -->
+    <button id="theme-toggle" class="theme-btn">🌙</button>
 
-      <!-- Conteneur pour les villes ajoutées -->
-      <section id="cities-container">
-        <!-- Chaque ville sera ajoutée dynamiquement ici -->
-      </section>
-    </main>
+    <div class="app">
+      <h1 class="app-title">🌤️ Application Météo Professionnelle</h1>
 
-    <!-- Template HTML pour afficher les données météo d'une ville -->
-    <template id="city-template">
-      <div class="city-card">
-        <h2 class="city-name"></h2>
-        <img class="weather-icon" src="" alt="Icône météo" />
-        <p class="temperature"></p>
-        <p class="humidity"></p>
-        <p class="wind"></p>
+      <!-- Barre de recherche -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Rechercher une ville..."
+        />
+        <button id="searchBtn">🔍</button>
+        <button id="geoBtn">📍</button>
       </div>
-    </template>
+
+      <!-- Autocomplétion -->
+      <ul id="suggestions"></ul>
+
+      <!-- Carte météo principale -->
+      <div class="weather-card fade-in">
+        <h2 id="cityName">—</h2>
+        <p id="localTime" class="local-time">Heure locale : —</p>
+
+        <div class="weather-info">
+          <img id="weatherIcon" src="" alt="" />
+          <p id="temperature" class="big-temp">—°C</p>
+        </div>
+
+        <div class="details">
+          <p class="detail-text">
+            <strong>Humidité :</strong> <span id="humidity">—%</span>
+          </p>
+          <p class="detail-text">
+            <strong>Vent :</strong> <span id="wind">— km/h</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- CONTENEUR 2 COLONNES -->
+      <div class="two-columns">
+        <!-- Prévisions -->
+        <div class="forecast-section">
+          <h3 class="subtitle forecast-title">Prévisions sur 5 jours</h3>
+          <div id="forecast" class="forecast-container fade-in"></div>
+        </div>
+
+        <!-- Villes enregistrées -->
+        <div class="saved-section">
+          <h3 class="subtitle saved-title">Villes enregistrées</h3>
+          <div id="savedCities" class="saved-cities"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
