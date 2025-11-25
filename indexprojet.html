@@ -12,39 +12,50 @@
     <button id="theme-toggle" class="theme-btn">🌙</button>
 
     <div class="app">
-      <h1 class="app-title">🌤️ Application Météo Professionnelle</h1>
+      <h1 class="app-title">🌤️ Météo Live</h1>
 
-      <!-- Barre de recherche -->
-      <div class="search-container">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Rechercher une ville..."
-        />
-        <button id="searchBtn">🔍</button>
-        <button id="geoBtn">📍</button>
+      <!-- Barre de recherche améliorée -->
+      <div class="search-section">
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Rechercher une ville..."
+            autocomplete="off"
+          />
+          <button id="searchBtn" class="search-button">🔍</button>
+          <button id="geoBtn" class="geo-button" title="Ma position">📍</button>
+        </div>
+        <ul id="suggestions" class="suggestions-list"></ul>
       </div>
-
-      <!-- Autocomplétion -->
-      <ul id="suggestions"></ul>
 
       <!-- Carte météo principale -->
       <div class="weather-card fade-in">
-        <h2 id="cityName">—</h2>
-        <p id="localTime" class="local-time">Heure locale : —</p>
+        <div class="weather-header">
+          <h2 id="cityName">—</h2>
+          <p id="localTime" class="local-time">Heure locale : —</p>
+        </div>
 
-        <div class="weather-info">
-          <img id="weatherIcon" src="" alt="" />
+        <div class="weather-main">
+          <div class="weather-icon-container">
+            <img id="weatherIcon" src="" alt="" class="weather-icon" />
+          </div>
           <p id="temperature" class="big-temp">—°C</p>
         </div>
 
-        <div class="details">
-          <p class="detail-text">
-            <strong>Humidité :</strong> <span id="humidity">—%</span>
-          </p>
-          <p class="detail-text">
-            <strong>Vent :</strong> <span id="wind">— km/h</span>
-          </p>
+        <div class="weather-details">
+          <div class="detail-item">
+            <span class="detail-label">💧 Humidité</span>
+            <span id="humidity" class="detail-value">—%</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">💨 Vent</span>
+            <span id="wind" class="detail-value">— km/h</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">🌡️ Ressenti</span>
+            <span id="feelsLike" class="detail-value">—°C</span>
+          </div>
         </div>
       </div>
 
@@ -52,16 +63,17 @@
       <div class="two-columns">
         <!-- Prévisions -->
         <div class="forecast-section">
-          <h3 class="subtitle forecast-title">Prévisions sur 5 jours</h3>
+          <h3 class="subtitle forecast-title">📅 Prévisions 5 jours</h3>
           <div id="forecast" class="forecast-container fade-in"></div>
         </div>
 
         <!-- Villes enregistrées -->
         <div class="saved-section">
-          <h3 class="subtitle saved-title">Villes enregistrées</h3>
+          <h3 class="subtitle saved-title">⭐ Villes favorites</h3>
           <div id="savedCities" class="saved-cities"></div>
         </div>
       </div>
     </div>
+    <script src="scriptmeteoapi.js"></script>
   </body>
 </html>
