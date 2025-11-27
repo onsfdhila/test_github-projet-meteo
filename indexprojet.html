@@ -1,36 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>App Météo Pro</title>
     <link rel="stylesheet" href="meteo.css" />
   </head>
-
   <body class="light">
-    <!-- Toggle Thème -->
-    <button id="theme-toggle" class="theme-btn">🌙</button>
+    <button id="theme-toggle" class="theme-btn" aria-label="Basculer thème">
+      🌙
+    </button>
 
     <div class="app">
-      <h1 class="app-title">🌤️ Météo Live</h1>
+      <h1 class="app-title">🌤 Météo Live</h1>
 
-      <!-- Barre de recherche améliorée -->
       <div class="search-section">
         <div class="search-container">
           <input
-            type="text"
             id="searchInput"
+            type="text"
             placeholder="Rechercher une ville..."
             autocomplete="off"
+            aria-autocomplete="list"
+            aria-controls="suggestions"
+            aria-expanded="false"
           />
-          <button id="searchBtn" class="search-button">🔍</button>
-          <button id="geoBtn" class="geo-button" title="Ma position">📍</button>
+          <button id="searchBtn" class="search-button" aria-label="Rechercher">
+            🔍
+          </button>
+          <button
+            id="geoBtn"
+            class="geo-button"
+            title="Ma position"
+            aria-label="Ma position"
+          >
+            📍
+          </button>
         </div>
-        <ul id="suggestions" class="suggestions-list"></ul>
+        <ul
+          id="suggestions"
+          class="suggestions-list"
+          role="listbox"
+          tabindex="-1"
+          aria-label="Suggestions"
+        ></ul>
       </div>
 
-      <!-- Carte météo principale -->
-      <div class="weather-card fade-in">
+      <div class="weather-card fade-in" role="region" aria-live="polite">
         <div class="weather-header">
           <h2 id="cityName">—</h2>
           <p id="localTime" class="local-time">Heure locale : —</p>
@@ -44,36 +60,39 @@
         </div>
 
         <div class="weather-details">
-          <div class="detail-item">
-            <span class="detail-label">💧 Humidité</span>
-            <span id="humidity" class="detail-value">—%</span>
+          <div class="sun-times">
+            <p id="currentDate" class="detail-item">📅 Date : —</p>
+            <p id="sunrise" class="detail-item">🌅 Lever : —</p>
+            <p id="sunset" class="detail-item">🌇 Coucher : —</p>
           </div>
           <div class="detail-item">
             <span class="detail-label">💨 Vent</span>
             <span id="wind" class="detail-value">— km/h</span>
           </div>
           <div class="detail-item">
-            <span class="detail-label">🌡️ Ressenti</span>
+            <span class="detail-label">🌡 Ressenti</span>
             <span id="feelsLike" class="detail-value">—°C</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">💧 Humidité</span>
+            <span id="humidity" class="detail-value">—%</span>
           </div>
         </div>
       </div>
 
-      <!-- CONTENEUR 2 COLONNES -->
       <div class="two-columns">
-        <!-- Prévisions -->
         <div class="forecast-section">
           <h3 class="subtitle forecast-title">📅 Prévisions 5 jours</h3>
           <div id="forecast" class="forecast-container fade-in"></div>
         </div>
 
-        <!-- Villes enregistrées -->
         <div class="saved-section">
           <h3 class="subtitle saved-title">⭐ Villes favorites</h3>
           <div id="savedCities" class="saved-cities"></div>
         </div>
       </div>
     </div>
+
     <script src="scriptmeteoapi.js"></script>
   </body>
 </html>
