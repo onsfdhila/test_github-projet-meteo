@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="meteo.css" />
   </head>
   <body class="light">
+    <!-- Bouton de changement de thème -->
     <button id="theme-toggle" class="theme-btn" aria-label="Basculer thème">
       🌙
     </button>
 
     <div class="app">
+      <!-- Titre principal de l'application -->
       <h1 class="app-title">🌤 Météo Live</h1>
 
+      <!-- Section de recherche avec autocomplétion -->
       <div class="search-section">
         <div class="search-container">
           <input
@@ -37,6 +40,7 @@
             📍
           </button>
         </div>
+        <!-- Liste des suggestions de villes -->
         <ul
           id="suggestions"
           class="suggestions-list"
@@ -46,50 +50,89 @@
         ></ul>
       </div>
 
-      <div class="weather-card fade-in" role="region" aria-live="polite">
-        <div class="weather-header">
-          <h2 id="cityName">—</h2>
-          <p id="localTime" class="local-time">Heure locale : —</p>
+      <!-- Sections principales côte à côte -->
+      <div class="top-sections">
+        <!-- Carte météo actuelle -->
+        <div
+          class="section weather-card fade-in"
+          role="region"
+          aria-live="polite"
+        >
+          <div class="weather-header">
+            <h2 id="cityName">—</h2>
+            <p id="localTime" class="local-time">Heure locale : —</p>
+          </div>
+
+          <div class="weather-main">
+            <div class="weather-icon-container">
+              <img id="weatherIcon" src="" alt="" class="weather-icon" />
+            </div>
+            <p id="temperature" class="big-temp">—°C</p>
+          </div>
+
+          <!-- État météo textuel -->
+          <div id="weatherState" class="weather-state">—</div>
+
+          <!-- Détails météorologiques -->
+          <div class="weather-details">
+            <!-- Ligne 1 : Date, lever et coucher du soleil -->
+            <div class="sun-times detail-row">
+              <p id="currentDate" class="detail-item">📅 Date du jour : —</p>
+              <p id="sunrise" class="detail-item">🌅 Lever du soleil : —</p>
+              <p id="sunset" class="detail-item">🌇 Coucher du soleil : —</p>
+            </div>
+
+            <!-- Section des indices météo pratiques -->
+            <div class="weather-indices">
+              <div class="index-item">
+                <span class="index-label">🌡️ Indice de chaleur</span>
+                <span id="heatIndex" class="index-value">—</span>
+              </div>
+              <div class="index-item">
+                <span class="index-label">💨 Confort vent</span>
+                <span id="windComfort" class="index-value">—</span>
+              </div>
+              <div class="index-item">
+                <span class="index-label">👕 Tenue conseillée</span>
+                <span id="clothingAdvice" class="index-value">—</span>
+              </div>
+            </div>
+
+            <!-- Ligne 3 : Vent, ressenti et humidité -->
+            <div class="detail-row">
+              <div class="detail-item">
+                <span class="detail-label">💨 Vent</span>
+                <span id="wind" class="detail-value">— km/h</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">🌡 Ressenti</span>
+                <span id="feelsLike" class="detail-value">—°C</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">💧 Humidité</span>
+                <span id="humidity" class="detail-value">—%</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="weather-main">
-          <div class="weather-icon-container">
-            <img id="weatherIcon" src="" alt="" class="weather-icon" />
-          </div>
-          <p id="temperature" class="big-temp">—°C</p>
-        </div>
-
-        <div class="weather-details">
-          <div class="sun-times">
-            <p id="currentDate" class="detail-item">📅 Date : —</p>
-            <p id="sunrise" class="detail-item">🌅 Lever : —</p>
-            <p id="sunset" class="detail-item">🌇 Coucher : —</p>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">💨 Vent</span>
-            <span id="wind" class="detail-value">— km/h</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">🌡 Ressenti</span>
-            <span id="feelsLike" class="detail-value">—°C</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">💧 Humidité</span>
-            <span id="humidity" class="detail-value">—%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="two-columns">
-        <div class="forecast-section">
+        <!-- Section des prévisions sur 5 jours -->
+        <div class="section forecast-section">
           <h3 class="subtitle forecast-title">📅 Prévisions 5 jours</h3>
           <div id="forecast" class="forecast-container fade-in"></div>
         </div>
+      </div>
 
-        <div class="saved-section">
-          <h3 class="subtitle saved-title">⭐ Villes favorites</h3>
-          <div id="savedCities" class="saved-cities"></div>
-        </div>
+      <!-- Prévisions horaires en grille -->
+      <div class="hourly-section">
+        <h3 class="subtitle">🕒 Prévisions horaires (24h)</h3>
+        <div id="hourlyForecast" class="hourly-forecast-container"></div>
+      </div>
+
+      <!-- Section des villes favorites -->
+      <div class="saved-section">
+        <h3 class="subtitle saved-title">⭐ Villes favorites</h3>
+        <div id="savedCities" class="saved-cities"></div>
       </div>
     </div>
 
